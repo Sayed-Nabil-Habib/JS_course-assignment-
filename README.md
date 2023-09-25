@@ -1,4 +1,4 @@
-# Ca-CSS Frameworks - Bootstrap
+# Ca-Course assignment for the JavaScript 2
 
 ![image](./assets/project-screenshot.png)
 
@@ -6,7 +6,7 @@ A simple overview of the use/purpose of the project.
 
 ## Description
 
-A web appilcation was made for my css frameworks course assingmnet .
+A web appilcation was made for my JS2 course assingmnet.
 
 ## Built With
 
@@ -22,6 +22,7 @@ A web appilcation was made for my css frameworks course assingmnet .
 
 ```bash
 git clone https://github.com/Sayed-Nabil-Habib/css-frameworks-ca
+
 ```
 
 ### Running
