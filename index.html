@@ -7,6 +7,7 @@
   <title>Document</title>
   <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="./src/scss/index.css">
+  <script src="./login.js" defer></script>
 </head>
 <body>
 
@@ -21,11 +22,11 @@
       </div>
 
       <div class="col-sm-12 col-md-6  logIn">
-        <form action="/profile.html"  class="auth-form p-4">
+        <form action="/profile.html" class="auth-form p-4" id="login-form">
           <h2 class="mb-4">Login or Register</h2>
           <div class="mb-3">
             <label for="email" class="form-label"></label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Email address" required >
+            <input type="email" class="form-control" id="email" name="email" placeholder="Email address" required>
           </div>
           <div class="mb-3">
             <label for="password" class="form-label"></label>
@@ -34,6 +35,7 @@
           <button type="submit" class="btn btn-primary">Login</button>
           <a href="/register.html" class="btn btn-secondary">Register</a>
         </form>
+        
       </div>
     </div>
   </div>
