@@ -13,25 +13,27 @@
 
  
   <div class="container">
-
     <div class="row justify-content-center align-items-center gx-5 min-vh-100">
+      <form class="row g-3" id="registrationForm">
+        <div class="col-6">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Name" required>
+        </div>
 
-     
-
-      <form id="registrationForm">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required><br><br>
-      
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
-      
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br><br>
-      
-        <button type="submit">Register</button>
+        <div class="col-md-6">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="youremail@noroff.no" required>
+        </div>
+        
+        <div class="col-md-6">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" required>
+        </div>
+    
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Register</button>
+        </div>
       </form>
-      
-
     </div>
   </div>
 
