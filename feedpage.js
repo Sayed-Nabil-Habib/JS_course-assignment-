@@ -51,7 +51,7 @@ async function fetchUserInfoAndDisplay() {
 
 
 // Function to fetch and display data from another API
-async function fetchAndDisplayDataFromOtherAPI() {
+async function fetchAndDisplayDataFromOtherAPI(selectedFilter = 'all') {
   const accessToken = localStorage.getItem('accessToken');
 
   if (!accessToken) {
@@ -76,13 +76,16 @@ async function fetchAndDisplayDataFromOtherAPI() {
       // Assuming responseData is an array of posts
       const feedContainer = document.getElementById('feed-container');
       if (feedContainer) {
-        
-        responseData.forEach((post) => {
-          if(post.media){
+        // Clear any existing content
+        feedContainer.innerHTML = '';
 
-       
-          const postElement = document.createElement('div');
-          postElement.className = 'card mb-3'; 
+        // Filter posts based on the selected filter
+        const filteredPosts = filterPostsBySelectedOption(responseData, selectedFilter);
+
+        filteredPosts.forEach((post) => {
+          if (post.media) {
+            const postElement = document.createElement('div');
+            postElement.className = 'card mb-3';
 
           postElement.innerHTML = `
             <div class="card-header">
@@ -104,9 +107,9 @@ async function fetchAndDisplayDataFromOtherAPI() {
             </div>
           `;
 
-          // Append the post element to the feed container
-          feedContainer.appendChild(postElement);
-        }
+           // Append the post element to the feed container
+            feedContainer.appendChild(postElement);
+          }
         });
       }
     } else {
@@ -117,8 +120,31 @@ async function fetchAndDisplayDataFromOtherAPI() {
   }
 }
 
+// Function to filter posts based on the selected option
+function filterPostsBySelectedOption(posts, selectedFilter) {
+  if (selectedFilter === 'all') {
+    return posts;
+  } else if (selectedFilter === 'earliest') {
+    return posts.slice().sort((a, b) => new Date(a.created) - new Date(b.created));
+  } else if (selectedFilter === 'latest') {
+    return posts.slice().sort((a, b) => new Date(b.created) - new Date(a.created));
+  }
+
+  return posts;
+}
+
 window.addEventListener('load', () => {
   fetchUserInfoAndDisplay();
-  fetchAndDisplayDataFromOtherAPI(); // Call the new function here
+  fetchAndDisplayDataFromOtherAPI(); // Call the function with the default filter
+
+  const selectElement = document.querySelector('select');
+  if (selectElement) {
+    selectElement.addEventListener('change', (event) => {
+      const selectedFilter = event.target.value;
+      fetchAndDisplayDataFromOtherAPI(selectedFilter); // Call the function with the selected filter
+    });
+  }
 });
+
+
 
