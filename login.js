@@ -1,5 +1,5 @@
-
 const API_BASE_URL = 'https://api.noroff.dev';
+
 async function loginUser(url, data) {
   try {
     const postData = {
@@ -16,11 +16,11 @@ async function loginUser(url, data) {
       const json = await response.json();
       const accessToken = json.accessToken;
       const username = json.name; // Extract the username from the response
-      const email = json.email;
+      const email = json.email; // Extract the email from the response
 
       localStorage.setItem('accessToken', accessToken);
       localStorage.setItem('username', username); // Store the username in local storage
-      localStorage.setItem('email', email); // Store the username in local storage
+      localStorage.setItem('email', email); // Store the email in local storage
 
       window.location.href = './feed.html';
     } else {
@@ -47,16 +47,16 @@ loginForm.addEventListener('submit', async function (event) {
 
   await loginUser(`${API_BASE_URL}/api/v1/social/auth/login`, userLogin);
 
-
-
-  
+  // Check if the username and email are saved in local storage
   const savedUsername = localStorage.getItem('username');
+  const savedEmail = localStorage.getItem('email');
 
-  if (savedUsername) {
-    // The username is saved in local storage
+  if (savedUsername && savedEmail) {
+    // Both the username and email are saved in local storage
     console.log('Username is saved:', savedUsername);
+    console.log('Email is saved:', savedEmail);
   } else {
-    // The username is not saved in local storage
-    console.log('Username is not saved.');
+    // Either the username or email is not saved in local storage
+    console.log('Username or Email is not saved.');
   }
 });
