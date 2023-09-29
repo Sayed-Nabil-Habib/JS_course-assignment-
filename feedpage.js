@@ -50,6 +50,10 @@ async function fetchUserInfoAndDisplay() {
 
 
 
+
+
+
+
 // Function to fetch and display data from another API
 async function fetchAndDisplayDataFromOtherAPI(selectedFilter = 'all') {
   const accessToken = localStorage.getItem('accessToken');
@@ -120,6 +124,87 @@ async function fetchAndDisplayDataFromOtherAPI(selectedFilter = 'all') {
   }
 }
 
+
+
+
+
+
+
+
+
+// Function to post and display a post
+async function createNewPost() {
+  const accessToken = localStorage.getItem('accessToken');
+  const title = document.getElementById('postTitle').value;
+  const body = document.getElementById('floatingTextarea2').value;
+  const tags = document.getElementById('postTags').value.split(','); // Convert comma-separated tags to an array
+  const media = document.getElementById('postMedia').value;
+
+  if (!accessToken) {
+    console.log('Access token not found in local storage.');
+    return;
+  }
+
+  console.log('POST Data:', {
+    title,
+    body,
+    tags,
+    media,
+  });
+
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/v1/social/posts`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      },
+      body: JSON.stringify({
+        title,
+        body,
+        tags,
+        media,
+      }),
+    });
+// Validate the media URL format
+const mediaUrlPattern = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/;
+if (!mediaUrlPattern.test(media)) {
+  console.log('Invalid media URL format');
+  return;
+}
+    if (response.status === 200) {
+      const newPostData = await response.json();
+      console.log('New Post Data:', newPostData);
+      // Display the new post data in your UI as needed
+    } else {
+      console.log(`Failed to create a new post. Status code: ${response.status}`);
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
+}
+
+// Add an event listener to the "Post" button
+const postButton = document.getElementById('postButton');
+postButton.addEventListener('click', createNewPost);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Function to filter posts based on the selected option
 function filterPostsBySelectedOption(posts, selectedFilter) {
   if (selectedFilter === 'all') {
@@ -145,6 +230,9 @@ window.addEventListener('load', () => {
     });
   }
 });
+
+
+
 
 
 

@@ -90,40 +90,30 @@
 
     <div class="col-md-6 ">
 
-      <div class="container bg-light p-3">
+      <div class="container mt-5" id="postContainer">
+        <h1>Create a New Post</h1>
+        <form id="postForm">
+            <div class="form-group">
+                <label for="postTitle">Title</label>
+                <input type="text" class="form-control" id="postTitle" required>
+            </div>
+            <div class="form-group">
+                <label for="floatingTextarea2">Body</label>
+                <textarea class="form-control" placeholder="Write something...." id="floatingTextarea2" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="postTags">Tags (comma-separated)</label>
+                <input type="text" class="form-control" id="postTags">
+            </div>
+            <div class="form-group">
+                <label for="postMedia">Media URL</label>
+                <input type="text" class="form-control" id="postMedia" placeholder="Media URL">
 
-        <div class="row">
+            </div>
+            <button type="button" class="btn btn-primary" id="postButton">Post</button>
 
-          <div class="col col-md-3">
-            <div class="mb-3">
-    
-              <div class="input-group">
-                  <input type="file" class="form-control visually-hidden" id="fileInput">
-                  <label for="fileInput" class="input-group-text btn btn-primary">
-                      <i class="fas fa-upload"></i> Upload
-                  </label>
-              </div>
-          </div>
-          
-          </div>
-
-          <div class="col col-md-3">
-            <button type="button" class="btn btn-outline-success">
-              <i class="fas fa-share"></i> <span class="text-sm">Share</span>
-          </button>
-          
-          
-
-          </div>
-         
-        </div>
-        
-        <div class="form-floating">
-          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-          <label for="floatingTextarea2">Write something....</label>
-        </div>
-        <button type="button" class="btn btn-primary  d-block mx-auto me-2 m-2">Post</button>
-      </div>
+        </form>
+    </div>
 
       <div class="container mt-2 p-3">
         <div class="col-3">
