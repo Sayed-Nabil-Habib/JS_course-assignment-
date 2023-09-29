@@ -70,7 +70,7 @@ async function fetchAndDisplayDataFromOtherAPI(selectedFilter = 'all') {
 
     if (otherAPIResponse.status === 200) {
       // Handle the response data as needed
-      const responseData = await otherAPIResponse.json();
+      responseData = await otherAPIResponse.json();
       console.log('Data from other API:', responseData);
 
       // Assuming responseData is an array of posts
@@ -83,7 +83,7 @@ async function fetchAndDisplayDataFromOtherAPI(selectedFilter = 'all') {
         const filteredPosts = filterPostsBySelectedOption(responseData, selectedFilter);
 
         filteredPosts.forEach((post) => {
-          if (post.media) {
+           if (post.media) {
             const postElement = document.createElement('div');
             postElement.className = 'card mb-3';
 
@@ -148,3 +148,66 @@ window.addEventListener('load', () => {
 
 
 
+
+
+
+
+
+
+
+
+// Function to filter and display posts based on search input
+function filterAndDisplayPosts(searchValue) {
+  const feedContainer = document.getElementById('feed-container');
+  
+  // Clear any existing content
+  feedContainer.innerHTML = '';
+  
+  // Filter posts based on the search value
+  const filteredPosts = responseData.filter(post => {
+    const title = post.title ? post.title.toLowerCase() : ''; // Check if title exists
+    const body = post.body ? post.body.toLowerCase() : '';    // Check if body exists
+    return title.includes(searchValue) || body.includes(searchValue);
+  });
+
+  console.log('Filtered Posts:', filteredPosts);
+
+  filteredPosts.forEach(post => {
+    const postElement = document.createElement('div');
+    postElement.className = 'card mb-3';
+
+    postElement.innerHTML = `
+      <div class="card-header">
+        <div class="row align-items-center">
+          <div class="col-auto d-flex align-items-center">
+            <img src="${post.title}" class="rounded-circle custom-rounded-image img-fluid" alt="" style="max-width: 30px;">
+            <h6 id="user-profile-name" class="user-profile-name card-title mb-0 ms-2">${post.title}</h6>
+          </div>
+        </div>
+      </div>
+      <img src="${post.media}" class="card-img-top" alt="post-image">
+      <div class="card-body">
+        <p class="card-text">${post.body}</p>
+      </div>
+      <div class="card-footer">
+        <button type="button" class="btn btn-primary"><i class="far fa-thumbs-up"></i> Like</button>
+        <button type="button" class="btn btn-secondary"><i class="far fa-comment"></i> Comment</button>
+        <button type="button" class="btn btn-info"><i class="fas fa-share"></i> Share</button>
+      </div>
+    `;
+
+    feedContainer.appendChild(postElement);
+  });
+}
+
+// Event listener for the search input
+const searchInput = document.getElementById('search-input');
+searchInput.addEventListener('input', function () {
+  const searchValue = this.value.trim().toLowerCase();
+  console.log('Search Value:', searchValue); // Log the search value to the console
+
+  // Log responseData to verify its contents
+  console.log('Response Data:', responseData);
+
+  filterAndDisplayPosts(searchValue);
+});
