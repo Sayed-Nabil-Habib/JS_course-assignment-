@@ -15,12 +15,12 @@ async function loginUser(url, data) {
     if (response.status === 200) {
       const json = await response.json();
       const accessToken = json.accessToken;
-      const username = json.name; // Extract the username from the response
-      const email = json.email; // Extract the email from the response
+      const username = json.name; 
+      const email = json.email; 
 
       localStorage.setItem('accessToken', accessToken);
-      localStorage.setItem('username', username); // Store the username in local storage
-      localStorage.setItem('email', email); // Store the email in local storage
+      localStorage.setItem('username', username); 
+      localStorage.setItem('email', email); 
 
       window.location.href = './feed.html';
     } else {
@@ -47,16 +47,16 @@ loginForm.addEventListener('submit', async function (event) {
 
   await loginUser(`${API_BASE_URL}/api/v1/social/auth/login`, userLogin);
 
-  // Check if the username and email are saved in local storage
+
   const savedUsername = localStorage.getItem('username');
   const savedEmail = localStorage.getItem('email');
 
   if (savedUsername && savedEmail) {
-    // Both the username and email are saved in local storage
+  
     console.log('Username is saved:', savedUsername);
     console.log('Email is saved:', savedEmail);
   } else {
-    // Either the username or email is not saved in local storage
+  
     console.log('Username or Email is not saved.');
   }
 });

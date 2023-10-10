@@ -1,6 +1,6 @@
 const API_BASE_URL = 'https://api.noroff.dev';
-let savedUsername; // Declare savedUsername at a higher scope
-let accessToken; // Declare accessToken at a higher scope
+let savedUsername; 
+let accessToken; 
 
 async function fetchUserInfoAndDisplay() {
   accessToken = localStorage.getItem('accessToken'); // Assign value to accessToken
@@ -61,7 +61,7 @@ async function fetchUserInfoAndDisplay() {
 
 async function fetchPostsByUserProfile() {
   try {
-    // Fetch posts by the user's profile
+   
     const postsResponse = await fetch(`${API_BASE_URL}/api/v1/social/profiles/${savedUsername}/posts`, {
       method: 'GET',
       headers: {
@@ -75,15 +75,14 @@ async function fetchPostsByUserProfile() {
       const postContainer = document.getElementById('post-container');
 
       if (postsData.length > 0) {
-        // Clear any existing content in the post container
+       
         postContainer.innerHTML = '';
 
-        // Loop through the retrieved posts and display them as cards
+   
         postsData.forEach((post) => {
           const postElement = document.createElement('div');
           postElement.className = 'card mb-3';
 
-          // Check if the post has media (image)
      
             postElement.innerHTML = `
               <!-- Card structure with media -->
@@ -118,7 +117,7 @@ async function fetchPostsByUserProfile() {
             }
           postContainer.appendChild(postElement);
 
-          // Attach event listener to the delete button
+        
           const deleteButton = postElement.querySelector('.delete-post');
           if (deleteButton) {
             deleteButton.addEventListener('click', () => {
@@ -140,10 +139,10 @@ async function fetchPostsByUserProfile() {
   }
 }
 
-// Function to delete a post by ID
+
 async function deletePost(postId) {
   try {
-    // Send a DELETE request to the API endpoint
+   
     const deleteResponse = await fetch(`${API_BASE_URL}/api/v1/social/posts/${postId}`, {
       method: 'DELETE',
       headers: {
@@ -153,12 +152,12 @@ async function deletePost(postId) {
     });
 
     if (deleteResponse.status === 204) {
-      // Post deleted successfully, you can update the UI as needed
+     
       console.log(`Post with ID ${postId} deleted successfully.`);
-      // Refresh the posts after deletion
+      
       fetchPostsByUserProfile();
     } else if (deleteResponse.status === 200) {
-      // Log the response body if status code is 200 (for debugging purposes)
+     
       const responseBody = await deleteResponse.json();
       console.log(`Received status code 200. Response body:`, responseBody);
     } else {
@@ -173,7 +172,7 @@ async function deletePost(postId) {
 
 
 
-// Function to handle the edit button click
+
 function handleEditButtonClick(postId) {
   const postTextElement = document.querySelector(`[data-post-id="${postId}"]`);
   const currentText = postTextElement.textContent;
@@ -181,21 +180,21 @@ function handleEditButtonClick(postId) {
   const newText = prompt('Edit the post body:', currentText);
   
   if (newText !== null && newText !== currentText) {
-    // Update the post body locally
+
     
-    // Send a PUT request to update the post on the server
+    
     updatePost(postId, newText);
   }
 }
 
-// Function to update a post body
+
 async function updatePost(postId, newBody) {
   try {
     const updateData = {
       body: newBody,
     };
 
-  // Send a PUT request to the API endpoint to update the post body
+ 
   const updateResponse = await fetch(`${API_BASE_URL}/api/v1/social/posts/${postId}`, {
     method: 'PUT',
     headers: {
@@ -206,7 +205,7 @@ async function updatePost(postId, newBody) {
   });
 
   if (updateResponse.status === 200) {
-    // Post body updated successfully
+   
     console.log(`Post with ID ${postId} body updated successfully.`);
   } else {
     console.log(`Failed to update post with ID ${postId}. Status code: ${updateResponse.status}`);
@@ -219,7 +218,7 @@ async function updatePost(postId, newBody) {
 
 window.addEventListener('load', fetchUserInfoAndDisplay);
 
-// Attach event listeners to the "Edit" buttons only
+
 document.addEventListener('click', (event) => {
   if (event.target.classList.contains('edit-post')) {
     const postId = event.target.getAttribute('data-post-id');

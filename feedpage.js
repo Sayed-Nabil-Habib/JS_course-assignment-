@@ -1,6 +1,8 @@
 const API_BASE_URL = 'https://api.noroff.dev';
 const socialPost = '/api/v1/social/posts';
 
+
+
 async function fetchUserInfoAndDisplay() {
   const accessToken = localStorage.getItem('accessToken');
   const savedUsername = localStorage.getItem('username');
@@ -50,11 +52,6 @@ async function fetchUserInfoAndDisplay() {
 
 
 
-
-
-
-
-// Function to fetch and display data from another API
 async function fetchAndDisplayDataFromOtherAPI(selectedFilter = 'all') {
   const accessToken = localStorage.getItem('accessToken');
 
@@ -64,7 +61,7 @@ async function fetchAndDisplayDataFromOtherAPI(selectedFilter = 'all') {
   }
 
   try {
-    // Make an API call to the other endpoint using the access token
+    
     const otherAPIResponse = await fetch(`${API_BASE_URL}${socialPost}`, {
       method: 'GET',
       headers: {
@@ -73,17 +70,17 @@ async function fetchAndDisplayDataFromOtherAPI(selectedFilter = 'all') {
     });
 
     if (otherAPIResponse.status === 200) {
-      // Handle the response data as needed
+     
       responseData = await otherAPIResponse.json();
       console.log('Data from other API:', responseData);
 
-      // Assuming responseData is an array of posts
+      
       const feedContainer = document.getElementById('feed-container');
       if (feedContainer) {
-        // Clear any existing content
+        
         feedContainer.innerHTML = '';
 
-        // Filter posts based on the selected filter
+      
         const filteredPosts = filterPostsBySelectedOption(responseData, selectedFilter);
 
         filteredPosts.forEach((post) => {
@@ -111,7 +108,7 @@ async function fetchAndDisplayDataFromOtherAPI(selectedFilter = 'all') {
             </div>
           `;
 
-           // Append the post element to the feed container
+      
             feedContainer.appendChild(postElement);
           }
         });
@@ -132,12 +129,12 @@ async function fetchAndDisplayDataFromOtherAPI(selectedFilter = 'all') {
 
 
 
-// Function to post and display a post
+
 async function createNewPost() {
   const accessToken = localStorage.getItem('accessToken');
   const title = document.getElementById('postTitle').value;
   const body = document.getElementById('floatingTextarea2').value;
-  const tags = document.getElementById('postTags').value.split(','); // Convert comma-separated tags to an array
+  const tags = document.getElementById('postTags').value.split(',');  
   const media = document.getElementById('postMedia').value;
 
   if (!accessToken) {
@@ -166,7 +163,7 @@ async function createNewPost() {
         media,
       }),
     });
-// Validate the media URL format
+
 const mediaUrlPattern = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/;
 if (!mediaUrlPattern.test(media)) {
   console.log('Invalid media URL format');
@@ -175,7 +172,7 @@ if (!mediaUrlPattern.test(media)) {
     if (response.status === 200) {
       const newPostData = await response.json();
       console.log('New Post Data:', newPostData);
-      // Display the new post data in your UI as needed
+    
     } else {
       console.log(`Failed to create a new post. Status code: ${response.status}`);
     }
@@ -184,7 +181,6 @@ if (!mediaUrlPattern.test(media)) {
   }
 }
 
-// Add an event listener to the "Post" button
 const postButton = document.getElementById('postButton');
 postButton.addEventListener('click', createNewPost);
 
@@ -205,7 +201,7 @@ postButton.addEventListener('click', createNewPost);
 
 
 
-// Function to filter posts based on the selected option
+
 function filterPostsBySelectedOption(posts, selectedFilter) {
   if (selectedFilter === 'all') {
     return posts;
@@ -220,13 +216,13 @@ function filterPostsBySelectedOption(posts, selectedFilter) {
 
 window.addEventListener('load', () => {
   fetchUserInfoAndDisplay();
-  fetchAndDisplayDataFromOtherAPI(); // Call the function with the default filter
+  fetchAndDisplayDataFromOtherAPI(); 
 
   const selectElement = document.querySelector('select');
   if (selectElement) {
     selectElement.addEventListener('change', (event) => {
       const selectedFilter = event.target.value;
-      fetchAndDisplayDataFromOtherAPI(selectedFilter); // Call the function with the selected filter
+      fetchAndDisplayDataFromOtherAPI(selectedFilter); 
     });
   }
 });
@@ -244,17 +240,15 @@ window.addEventListener('load', () => {
 
 
 
-// Function to filter and display posts based on search input
 function filterAndDisplayPosts(searchValue) {
   const feedContainer = document.getElementById('feed-container');
-  
-  // Clear any existing content
+
   feedContainer.innerHTML = '';
   
-  // Filter posts based on the search value
+
   const filteredPosts = responseData.filter(post => {
-    const title = post.title ? post.title.toLowerCase() : ''; // Check if title exists
-    const body = post.body ? post.body.toLowerCase() : '';    // Check if body exists
+    const title = post.title ? post.title.toLowerCase() : ''; 
+    const body = post.body ? post.body.toLowerCase() : ''; 
     return title.includes(searchValue) || body.includes(searchValue);
   });
 
@@ -288,13 +282,13 @@ function filterAndDisplayPosts(searchValue) {
   });
 }
 
-// Event listener for the search input
+
 const searchInput = document.getElementById('search-input');
 searchInput.addEventListener('input', function () {
   const searchValue = this.value.trim().toLowerCase();
-  console.log('Search Value:', searchValue); // Log the search value to the console
+  console.log('Search Value:', searchValue); 
 
-  // Log responseData to verify its contents
+  
   console.log('Response Data:', responseData);
 
   filterAndDisplayPosts(searchValue);

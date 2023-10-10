@@ -11,15 +11,15 @@ async function registerUser(url, data) {
     };
 
     const response = await fetch(url, postData);
-    console.log(response); // Log the response
+    console.log(response); 
 
     const json = await response.json();
-    console.log(json); // Log the parsed JSON data
+    console.log(json); 
 
-    return { status: response.status, data: json }; // Return both status and data
+    return { status: response.status, data: json }; 
   } catch (error) {
     console.log(error);
-    return { status: 500, data: null }; // Return an error status and no data
+    return { status: 500, data: null }; 
   }
 }
 
@@ -44,7 +44,7 @@ registrationForm.addEventListener('submit', async (event) => {
     user
   );
 
-  // Determine the registration status based on the HTTP status code and response data
+ 
   if (registrationResponse.status === 201 && registrationResponse.data) {
     registrationMessage.textContent = 'You are registered successfully';
     registrationMessage.style.color = 'green';
