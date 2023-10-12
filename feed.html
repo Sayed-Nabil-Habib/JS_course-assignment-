@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./src/scss/index.css">
+  <script src="./feedpage.js" defer></script>
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body>
+
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./src/scss/index.css">
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+<body>
+  <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container">
+            <button class=" navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01"
+                aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+              
+            <div class=" row collapse navbar-collapse justify-content-between" id="navbarTogglerDemo01">
+                <div class="d-flex align-items-center">
+                    <a class="col-2 navbar-brand me-lg-3 m-3 " href="#">XConnect</a>
+
+                    <form class="col-6 d-flex m-2">
+                      <input class="form-control me-2" id="search-input" type="search" placeholder="Search" aria-label="Search">
+                      <button class="btn btn-outline-primary btn-sm" type="submit">Search</button>
+                  </form>
+                  
+
+                    <div class="col-3 m-4 d-flex align-items-center">
+                      <a href="./profile.html" class="d-flex align-items-center text-decoration-none ">
+                          <img src="./assets/profile.jpg" alt="Small Image" width="30" height="30"
+                              class="img-fluid d-block mx-auto me-lg-2">
+                          <span class="ms-lg-2 d-none d-lg-block">Profile</span>
+                      </a>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+
+
+  <!--Feed-section-->
+  
+  
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-3 ">
+      <div class="card d-none d-lg-flex">
+
+        <div class="mx-auto text-center">
+            <img src="./assets/profile.jpg" class="card-img-top rounded-circle custom-rounded-image img-fluid mt-3" alt="profile-picture">
+            <h5 id="user-profile-name" class="user-profile-name card-title mt-3">user name</h5>
+        </div>
+
+        <ul class="list-group list-group-flush mx-auto">
+            <li class="list-group-item">246 Followers</li>
+            <li class="list-group-item">259 Following</li>
+        </ul>
+
+        <div class="card-body mx-auto text-center">
+            <a href="./profile.html" class="card-link">View My Profile</a>
+        </div>
+        
+    </div>
+    </div>
+
+    <!--feed-middle-->
+
+    <div class="col-md-6 ">
+      <div id="successMessage" class="message success"></div>
+      <div id="errorMessage" class="message error"></div>
+      <div class="container mt-5" id="postContainer">
+        <h1>Create a New Post</h1>
+        <form id="postForm">
+            <div class="form-group">
+                <label for="postTitle">Title</label>
+                <input type="text" class="form-control" id="postTitle" required>
+            </div>
+            <div class="form-group">
+                <label for="floatingTextarea2">Body</label>
+                <textarea class="form-control" placeholder="Write something...." id="floatingTextarea2" rows="3"></textarea>
+            </div>
+          
+            <div class="form-group">
+                <label for="postMedia">Media URL</label>
+                <input type="text" class="form-control" id="postMedia" placeholder="Media URL">
+
+            </div>
+            <button type="button" class="btn btn-primary" id="postButton">Post</button>
+
+        </form>
+    </div>
+
+      <div class="container mt-2 p-3">
+        <div class="col-3">
+          <select id="filter-select" class="form-select" aria-label="Default select example">
+            <option value="all" class="filter-option">All</option>
+            <option value="earliest" class="filter-option">Earliest</option>
+            <option value="latest" class="filter-option">Latest</option>
+          </select>
+        </div>
+      </div>
+      
+      <!--feed posts-->
+      <div class="container mt-5">
+        
+        <div class="card mb-3" id="feed-container">
+          <div id="result-container"></div>
+            
+            
+           
+         
+        </div>
+      </div>
+      
+    </div>
+
+<!--Feed-rightside-->
+    <div class="col-md-3  d-none d-lg-flex">
+
+      <ol class="col-12 list-group list-group-numbered mt-3">
+        <h3>Notification</h3>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+          
+          <div class="ms-2 me-auto">
+            <div class="fw-bold">BBC News</div>
+            Click for viewing 
+          </div>
+          <span class="badge bg-primary rounded-pill">14</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+          <div class="ms-2 me-auto">
+            <div class="fw-bold">noroff </div>
+            Click for viewing 
+          </div>
+          <span class="badge bg-primary rounded-pill">14</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between align-items-start">
+          <div class="ms-2 me-auto">
+            <div class="fw-bold">others</div>
+            Click for viewing 
+          </div>
+          <span class="badge bg-primary rounded-pill">14</span>
+        </li>
+      </ol>
+    </div>
+  </div>
+    </div>
+
+
+   
+</div>
+</body>
+</html>
+</body>
+</html>

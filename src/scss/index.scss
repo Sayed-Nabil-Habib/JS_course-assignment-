@@ -1,0 +1,40 @@
+
+@import './variables';
+
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
+
+body{
+  background-color: rgb(237, 237, 237);
+ 
+}
+
+.welcome-text{
+  font-weight: 500;
+  font-size: 2rem;
+
+}
+.logIn{
+  background-color: #ffffff;
+  border-radius: 1%;
+
+
+}
+//-- feed page style goes here--//
+.custom-bordered-row{
+  border: 1px solid #000;
+  padding: 10px;
+  margin: 30px;
+}
+
+.custom-rounded-image {
+  border-radius: 50%; 
+  width: 20%; 
+}
+.custom-rounded-image2{
+  border-radius: 50%; 
+  
+}
+
+
+
+

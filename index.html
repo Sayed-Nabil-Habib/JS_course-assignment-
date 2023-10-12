@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./src/scss/index.css">
+  <script src="./login.js" defer></script>
+</head>
+<body>
+
+ 
+  <div class="container">
+
+    <div class="row justify-content-center align-items-center gx-5 min-vh-100">
+
+      <div class="col-sm-12 col-md-6  welcome-text">
+        <h1>Welcome to XConnect</h1>
+        <h4>Connect with friends and the world around you on XConnect.</h4>
+      </div>
+
+      <div class="col-sm-12 col-md-6  logIn">
+        <form action="/profile.html" class="auth-form p-4" id="login-form">
+          <h2 class="mb-4">Login or Register</h2>
+          <div class="mb-3">
+            <label for="email" class="form-label"></label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Email address" required>
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label"></label>
+            <input type="password" class="form-control" id="password" name="password" minlength="8" placeholder="Password" required>
+          </div>
+          <div id="logInMessage"></div>
+          <button type="submit" class="btn btn-primary">Login</button>
+          <a href="/register.html" class="btn btn-secondary">Register</a>
+        </form>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+</body>
+</html>
+
+
+</body>
+</html>

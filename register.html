@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="./src/scss/index.css">
+    <script src="./jscode.js" defer></script>
+</head>
+<body>
+
+ 
+  <div class="container">
+    <div class="row justify-content-center align-items-center gx-5 min-vh-100">
+      <form class="row g-3" id="registrationForm">
+        <div class="col-6">
+          <label for="name" class="form-label">Name</label>
+          <input type="text" class="form-control" id="name" placeholder="Name" required>
+        </div>
+
+        <div class="col-md-6">
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" placeholder="youremail@noroff.no" required>
+        </div>
+        
+        <div class="col-md-6">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" id="password" required>
+        </div>
+    
+        <div id="registrationMessage"></div>
+
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Register</button>
+          <a href="/index.html" class="btn btn-secondary">To Log in </a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+
+</body>
+</html>
+
+
+</body>
+</html>
