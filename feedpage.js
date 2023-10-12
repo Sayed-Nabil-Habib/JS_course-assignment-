@@ -136,7 +136,6 @@ async function fetchAndDisplayDataFromOtherAPI(selectedFilter = 'all') {
   const accessToken = localStorage.getItem('accessToken');
   const title = document.getElementById('postTitle').value;
   const body = document.getElementById('floatingTextarea2').value;
-  const tags = document.getElementById('postTags').value.split(',');
   const media = document.getElementById('postMedia').value;
 
   if (!accessToken) {
@@ -147,7 +146,6 @@ async function fetchAndDisplayDataFromOtherAPI(selectedFilter = 'all') {
   console.log('POST Data:', {
     title,
     body,
-    tags,
     media,
   });
 
@@ -161,7 +159,6 @@ async function fetchAndDisplayDataFromOtherAPI(selectedFilter = 'all') {
       body: JSON.stringify({
         title,
         body,
-        tags,
         media,
       }),
     });
@@ -185,7 +182,6 @@ async function fetchAndDisplayDataFromOtherAPI(selectedFilter = 'all') {
   
       document.getElementById('postTitle').value = '';
       document.getElementById('floatingTextarea2').value = '';
-      document.getElementById('postTags').value = '';
       document.getElementById('postMedia').value = '';
     } else {
       console.log(`Failed to create a new post. Status code: ${response.status}`);
