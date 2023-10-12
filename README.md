@@ -13,6 +13,7 @@ A web appilcation was made for my JS2 course assingmnet.
 - HTML
 - CSS/Sass
 - Bootstrap
+- JavaScript
 
 ## Getting Started
 
@@ -21,9 +22,13 @@ A web appilcation was made for my JS2 course assingmnet.
 1. Clone the repo:
 
 ```bash
-git clone https://github.com/Sayed-Nabil-Habib/css-frameworks-ca
+git clone https://github.com/Sayed-Nabil-Habib/JS_course-assignment-/tree/js2
 
 ```
+
+### project management tool:
+
+Trello board:https://trello.com/invite/b/rVeIdwOd/ATTIc5ff615f0325414ac264b4b8718f20eb44B5341B/js-course-assignment
 
 ### Running
 

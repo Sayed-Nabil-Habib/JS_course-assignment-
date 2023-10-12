@@ -2,7 +2,10 @@ const API_BASE_URL = 'https://api.noroff.dev';
 const socialPost = '/api/v1/social/posts';
 
 
-
+/**
+ * Fetches and displays the logged-in user data from the API.
+ * @returns {Promise<void>} A promise that resolves once the user data is displayed.
+ */
 async function fetchUserInfoAndDisplay() {
   const accessToken = localStorage.getItem('accessToken');
   const savedUsername = localStorage.getItem('username');
@@ -48,10 +51,11 @@ async function fetchUserInfoAndDisplay() {
 
 
 
-
-
-
-
+/**
+ * Fetches and displays posts from the API with optional filtering.
+ * @param {string} selectedFilter - The selected filter for posts ('all', 'earliest', 'latest').
+ * @returns {Promise<void>} A promise that resolves once the posts are displayed.
+ */
 async function fetchAndDisplayDataFromOtherAPI(selectedFilter = 'all') {
   const accessToken = localStorage.getItem('accessToken');
 
@@ -124,17 +128,15 @@ async function fetchAndDisplayDataFromOtherAPI(selectedFilter = 'all') {
 
 
 
-
-
-
-
-
-
-async function createNewPost() {
+/**
+ * Creates a new post and sends a POST request to the API.
+ * @returns {Promise<void>} A promise that resolves once the new post is created.
+ */
+ async function createNewPost() {
   const accessToken = localStorage.getItem('accessToken');
   const title = document.getElementById('postTitle').value;
   const body = document.getElementById('floatingTextarea2').value;
-  const tags = document.getElementById('postTags').value.split(',');  
+  const tags = document.getElementById('postTags').value.split(',');
   const media = document.getElementById('postMedia').value;
 
   if (!accessToken) {
@@ -164,25 +166,40 @@ async function createNewPost() {
       }),
     });
 
-const mediaUrlPattern = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/;
-if (!mediaUrlPattern.test(media)) {
-  console.log('Invalid media URL format');
-  return;
-}
+    const mediaUrlPattern = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/;
+    if (!mediaUrlPattern.test(media)) {
+      console.log('Invalid media URL format');
+    
+      return;
+    }
+
     if (response.status === 200) {
       const newPostData = await response.json();
       console.log('New Post Data:', newPostData);
-    
+      
+ 
+      const successMessage = document.getElementById('successMessage');
+      successMessage.textContent = 'Post created successfully';
+      successMessage.style.color = 'green';
+
+  
+      document.getElementById('postTitle').value = '';
+      document.getElementById('floatingTextarea2').value = '';
+      document.getElementById('postTags').value = '';
+      document.getElementById('postMedia').value = '';
     } else {
       console.log(`Failed to create a new post. Status code: ${response.status}`);
+     
     }
   } catch (error) {
     console.error('Error:', error);
+   
   }
 }
 
 const postButton = document.getElementById('postButton');
 postButton.addEventListener('click', createNewPost);
+
 
 
 

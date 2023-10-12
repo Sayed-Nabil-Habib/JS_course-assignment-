@@ -1,5 +1,14 @@
 const API_BASE_URL = 'https://api.noroff.dev';
 
+/**
+ * Registers a new user profile.
+ * @param {string} url - The URL to send the registration request.
+ * @param {Object} data - The user data to create a new profile.
+ * @param {string} data.name - The user's name.
+ * @param {string} data.email - The user's email address.
+ * @param {string} data.password - The user's password.
+ * @returns {Promise<{ status: number, data: Object }>} A promise that resolves with the registration status and response data.
+ */
 async function registerUser(url, data) {
   try {
     const postData = {

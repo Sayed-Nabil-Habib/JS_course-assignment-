@@ -1,5 +1,13 @@
 const API_BASE_URL = 'https://api.noroff.dev';
 
+/**
+ * Function to log in a user by sending a POST request to the API_BASE_URL with user data.
+ * @param {string} url - The URL to send the login request to.
+ * @param {Object} data - An object containing user login data.
+ * @param {string} data.email - The user's email.
+ * @param {string} data.password - The user's password.
+ * @returns {void}
+ */
 async function loginUser(url, data) {
   try {
     const postData = {
@@ -15,12 +23,12 @@ async function loginUser(url, data) {
     if (response.status === 200) {
       const json = await response.json();
       const accessToken = json.accessToken;
-      const username = json.name; 
-      const email = json.email; 
+      const username = json.name;
+      const email = json.email;
 
       localStorage.setItem('accessToken', accessToken);
-      localStorage.setItem('username', username); 
-      localStorage.setItem('email', email); 
+      localStorage.setItem('username', username);
+      localStorage.setItem('email', email);
 
       window.location.href = './feed.html';
     } else {
@@ -47,16 +55,13 @@ loginForm.addEventListener('submit', async function (event) {
 
   await loginUser(`${API_BASE_URL}/api/v1/social/auth/login`, userLogin);
 
-
   const savedUsername = localStorage.getItem('username');
   const savedEmail = localStorage.getItem('email');
 
   if (savedUsername && savedEmail) {
-  
     console.log('Username is saved:', savedUsername);
     console.log('Email is saved:', savedEmail);
   } else {
-  
     console.log('Username or Email is not saved.');
   }
 });
