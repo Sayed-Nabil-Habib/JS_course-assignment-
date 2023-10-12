@@ -1,6 +1,6 @@
 # Ca-Course assignment for the JavaScript 2
 
-![image](./assets/project-screenshot.png)
+![image](./assets/js%20screenshot.png)
 
 A simple overview of the use/purpose of the project.
 
